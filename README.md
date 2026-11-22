@@ -21,13 +21,13 @@ An end-to-end HR analytics portfolio project using **SQL (MySQL)** and **Power B
 ## Dashboard previews
 
 ### 1. HR Executive Overview
-![HR Executive Overview](HR20%ANALYTICS20%DASHBOARD/HR20%EXECUTIVE20%DASHBOARD.png)
+![HR Executive Overview](HR%20ANALYTICS%20DASHBOARD/HR%20EXECUTIVE%20DASHBOARD.png)
 
 ### 2. Attrition & Retention Analysis
-![Attrition and Retention Analysis](HR20%ANALYTICS20%DASHBOARD/ATTRITION20%DASHBOARD.png)
+![Attrition and Retention Analysis](HR%20ANALYTICS%20DASHBOARD/ATTRITION%20DASHBOARD.png)
 
 ### 3. Workforce Demographics & Structure
-![Workforce Demographics and Structure](HR20%ANALYTICS20%DASHBOARD/WORKFORCE.png)
+![Workforce Demographics and Structure](HR%20ANALYTICS%20DASHBOARD/WORKFORCE.png)
 
 ## Business problem
 
