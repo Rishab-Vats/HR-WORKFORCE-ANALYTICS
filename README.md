@@ -40,6 +40,30 @@ HR teams need a consistent view of workforce size, employee exits, attrition con
 - How is the workforce distributed across departments, job levels, education fields and age groups?
 - What do average professional experience, organisational tenure and training participation tell us about the workforce profile?
 
+## SQL Business Questions Solved
+
+Beyond the three Power BI dashboards, **MySQL** was used for data profiling, deduplication, KPI validation, and deeper exploratory analysis (`HR_Workforce_Analytics_Business_Queries.sql`). The key business questions answered through SQL include:
+
+### 1. Compensation & Pay Fairness
+- **Q1.** Are we losing high performers? *(Attrition rate comparison across `PerformanceRating` levels)*
+- **Q2.** Do lower salary hikes push employees to leave? *(Average, min, and max `PercentSalaryHike` for leavers vs. retained staff)*
+- **Q3.** Is there a gender pay gap within the same job role and job level? *(Average `MonthlyIncome` comparison between male and female employees by `JobRole` and `JobLevel`)*
+- **Q4.** Do stock options help retain employees? *(Attrition rate across `StockOptionLevel` bands 0–3)*
+
+### 2. Commute, Travel & Personal Factors
+- **Q5.** Does frequent business travel increase attrition? *(Attrition rate across `BusinessTravel` categories)*
+- **Q6.** Do employees who live farther from the office quit more often? *(Attrition rate across `DistanceFromHome` commute bands: Near, Moderate, Far)*
+- **Q7.** How does marital status affect attrition, and does overtime hit one group harder? *(Cross-segmentation of `MaritalStatus` × `OverTime`)*
+
+### 3. Career Stagnation & Manager Stability
+- **Q8.** Are employees leaving because they are stuck in the same role? *(Attrition rate across `YearsInCurrentRole` tenure bands)*
+- **Q9.** Does having a newer manager (0–1 years) relate to higher attrition? *(Attrition rate across `YearsWithCurrManager` bands, excluding missing records)*
+- **Q10.** Are frequent job-hoppers more likely to leave? *(Attrition rate grouped by `NumCompaniesWorked`)*
+
+### 4. Engagement & Training Impact
+- **Q11.** Does more training reduce attrition? *(Attrition rate across `TrainingTimesLastYear` session bands)*
+- **Q12.** How strongly do job involvement and relationship satisfaction relate to exits? *(Attrition breakdown across `JobInvolvement` and `RelationshipSatisfaction` levels 1–4)*
+
 ## Dataset profile
 
 The CSV contains **38 columns** covering:
@@ -137,14 +161,13 @@ These are descriptive associations from a static employee snapshot. They do not 
 - The screenshot labels DistanceFromHome as kilometres. Confirm the source unit; this dataset field is commonly recorded in miles. Use “Miles” only after verification.
 - Change the gender donut legend to “Gender” rather than “Overtime”.
 
-
 ### KPI reconciliation to complete before publishing
 
 The Dashboard 2 screenshot shows average tenure at exit of **5.12** and average job satisfaction of leavers of **2.46**. These match the raw 238 exit rows. The deduplicated employee-level dataset has 237 unique leavers; on that consistent grain, the corresponding averages are approximately **5.13 years** and **2.47 satisfaction points**. Rebuild these two measures over the same deduplicated employee-level table used for headcount and exit counts. This avoids mixing raw-row averages with distinct-employee counts.
 
 ## What business value does this project provide?
 
-The dashboards make several HR questions measurable and easier to investigate:
+The dashboards and SQL analysis make several HR questions measurable and easier to investigate:
 - Highlight employee segments with higher observed attrition.
 - Compare attrition rates using the correct segment denominator.
 - Show where employee headcount is concentrated.
@@ -163,7 +186,6 @@ The dashboards make several HR questions measurable and easier to investigate:
 - Cross-sectional relationships are descriptive, not causal.
 - Duplicate employee IDs and missing manager-tenure values require validation.
 
-
 ## Conclusion
 
-This project turns employee-level HR data into a three-page Power BI reporting solution supported by SQL analysis. It identifies an overall attrition rate of **16.12%**, highlights higher observed attrition in selected roles and early-tenure groups, and describes how employees are distributed across departments, education fields, age groups and experience bands. The dashboards give HR stakeholders a clearer evidence base for deciding where to investigate and what additional data would be needed for deeper workforce decisions.
+This project turns employee-level HR data into a three-page Power BI reporting solution supported by SQL analysis. It identifies an overall attrition rate of **16.12%**, highlights higher observed attrition in selected roles and early-tenure groups, and describes how employees are distributed across departments, education fields, age groups and experience bands. The dashboards and SQL queries give HR stakeholders a clearer evidence base for deciding where to investigate and what additional data would be needed for deeper workforce decisions.
